@@ -1,12 +1,6 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - rhtmddn100
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - rhtmddn100/COD-Project
+  - rhtmddn100/motif_representation
