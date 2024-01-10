@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <b>Master's Student</b> at <a href='https://www.snu.ac.kr/index.html'>Seoul National University</a>.
+subtitle: <strong>Master's Student</strong> at <a href='https://www.snu.ac.kr/index.html'>Seoul National University</a>.
 
 profile:
   align: right
