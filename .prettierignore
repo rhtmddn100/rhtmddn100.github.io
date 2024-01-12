@@ -1,4 +1,5 @@
 *.min.css
 assets/css/main.scss
 assets/plotly/demo.html
-_pages\about.md
+_pages/about.md
+_sass/_base.scss
