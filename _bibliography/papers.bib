@@ -3,7 +3,7 @@
 
 @inproceedings{yi2023towards,
   title={Towards physically reliable molecular representation learning},
-  author={Yi, Seunghoon and Youngwoo Cho and Sul, Jinhwan and Ko, SeungWoo and Kim, Soo Kyung and Choo, Jaegul and Yoon, Hongkee and Lee, Joonseok},
+  author={Yi, Seunghoon and Youngwoo Cho and Sul, Jinhwan and Ko, Seung Woo and Kim, Soo Kyung and Choo, Jaegul and Yoon, Hongkee and Lee, Joonseok},
   booktitle={Uncertainty in Artificial Intelligence},
   abbr={UAI},
   pages={2433--2443},
@@ -11,4 +11,18 @@
   organization={PMLR},
   abstract={Estimating the energetic properties of molecular systems is a critical task in material design. Machine learning has shown remarkable promise on this task over classical force fields, but a fully data-driven approach suffers from limited labeled data; not just the amount of available data lacks, but the distribution of labeled examples is highly skewed to stable states. In this work, we propose a molecular representation learning method that extrapolates well beyond the training distribution, powered by physics-driven parameter estimation from classical energy equations and self-supervised learning inspired from masked language modeling. To ensure reliability of the proposed model, we introduce a series of novel evaluation schemes in multifaceted ways, beyond the energy or force accuracy that has been dominantly used. From extensive experiments, we demonstrate that the proposed method is effective in discovering molecular structures, outperforming other baselines. Furthermore, we extrapolate it to the chemical reaction pathways beyond stable states, taking a step towards physically reliable molecular representation learning.},
   pdf={https://proceedings.mlr.press/v216/yi23a/yi23a.pdf}
+}
+
+@inproceedings{song2023consistency,
+  title={Consistency Models},
+  author={Yang Song and Prafulla Dhariwal and Mark Chen and Ilya Sutskever},
+  booktitle={the 40th International Conference on Machine Learning, 2023.},
+  abbr={ICML},
+  abstract={Diffusion models have made significant breakthroughs in image, audio, and video generation, but they depend on an iterative generation process that causes slow sampling speed and caps their potential for real-time applications. To overcome this limitation, we propose consistency models, a new family of generative models that achieve high sample quality without adversarial training. They support fast one-step generation by design, while still allowing for few-step sampling to trade compute for sample quality. They also support zero-shot data editing, like image inpainting, colorization, and super-resolution, without requiring explicit training on these tasks. Consistency models can be trained either as a way to distill pre-trained diffusion models, or as standalone generative models. Through extensive experiments, we demonstrate that they outperform existing distillation techniques for diffusion models in one- and few-step generation. For example, we achieve the new state-of-the-art FID of 3.55 on CIFAR-10 and 6.20 on ImageNet 64x64 for one-step generation. When trained as standalone generative models, consistency models also outperform single-step, non-adversarial generative models on standard benchmarks like CIFAR-10, ImageNet 64x64 and LSUN 256x256.},
+  pdf={https://arxiv.org/abs/2303.01469},
+  code={https://github.com/openai/consistency_models},
+  media={https://techcrunch.com/2023/04/12/openai-looks-beyond-diffusion-with-consistency-based-image-generator/},
+  year={2023},
+  poster={ICML2023/consistency.pdf},
+  selected={true}
 }
