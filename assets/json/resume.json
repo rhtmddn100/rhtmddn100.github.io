@@ -53,15 +53,33 @@
       "endDate": "2024-02-29",
       "score": "10",
       "courses": ["Theory of Relativity"]
+    },
+    {
+      "institution": "University of Cambridge",
+      "location": "Cambridge, United Kingdom",
+      "url": "https://www.cam.ac.uk",
+      "area": "Chemical Engineering",
+      "studyType": "BA and MEng",
+      "startDate": "2015-10-01",
+      "endDate": "2019-06-30",
+      "score": "10",
+      "courses": ["Theory of Relativity"]
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "Korea Presidential Science Scholarship",
+      "date": "2015-06-01",
+      "awarder": "Korea Student Aid Foundation",
+      "url": "",
+      "summary": "Awarded $50,000/year scholarship for four years."
+    },
+    {
+      "title": "United Steel Companies Scholarship",
+      "date": "2016-10-30",
+      "awarder": "University of Cambridge",
+      "url": "",
+      "summary": "Awarded £400 scholarship for excellent examination performance."
     }
   ],
   "certificates": [
@@ -133,16 +151,22 @@
   ],
   "skills": [
     {
-      "name": "Physics",
+      "name": "Programming Languages",
       "level": "Master",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Python",
+        "R",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "level": "Master",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "PyTorch",
+        "Tensorflow"
       ]
     }
   ],
