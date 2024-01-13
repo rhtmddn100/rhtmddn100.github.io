@@ -1,10 +1,10 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
-img: assets/img/12.jpg
+title: Molecular Representation with Motifs and Reaction Data
+description: Pretraining a GNN model using motifs and reaction data for downstream tasks.
+img: assets/img/motif.jpg
 importance: 1
-category: work
+category: Research
 related_publications: true
 ---
 
