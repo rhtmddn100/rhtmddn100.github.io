@@ -1,14 +1,14 @@
 ---
 layout: page
 title: Motif Representation
-description: Pretraining a GNN model using motifs and reaction data for downstream tasks.
+description: Pretraining a GNN model using molecule's motifs and reaction data for downstream applications.
 img: assets/img/motif.jpg
 importance: 1
 category: Research
 related_publications: true
 ---
 
-# Motivation
+## Motivation
 
 Chemical-Reaction-Aware Molecule Representation Learning (MolR) was published in ICLR 2022, utilizing reaction data (USPTO-479k) to pretrain molecular GNN.
 Their proposal was to use chemical equivalence between reactants and products in a chemical reaction.
