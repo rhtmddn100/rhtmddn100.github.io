@@ -8,6 +8,7 @@ _layouts/about.liquid
 _layouts/bib.liquid
 _layouts/cv.liquid
 _includes/header.liquid
+_includes/projects_horizontal.liquid
 _includes/resume/work.liquid
 _includes/resume/education.liquid
 _news/announcement_2.md

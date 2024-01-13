@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Molecular Representation with Motifs and Reaction Data
+title: Motif Representation
 description: Pretraining a GNN model using motifs and reaction data for downstream tasks.
 img: assets/img/motif.jpg
 importance: 1
