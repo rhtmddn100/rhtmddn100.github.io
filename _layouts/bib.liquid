@@ -78,7 +78,7 @@
           {% endif %}
         {% else %}
           {% unless forloop.last %}
-            {% if author_is_self %}<em>{{- author.first }} {{ author.last -}}</em>{% endif %},&nbsp;
+            {% if author_is_self %}<em>{{- author.first }} {{ author.last -}}</em>,&nbsp;
             {% else %}
               {% if coauthor_url %}
                 <a href="{{coauthor_url}}">
@@ -92,7 +92,7 @@
           {% else %}
             {% if author_array_limit == author_array_size %}and {% endif %}
             {% if author_is_self %}
-              <em>{{author.first}} {{auhtor.last}}</em>{% endif %}
+              <em>{{author.first}} {{auhtor.last}}</em>
             {% else %}
               {% if coauthor_url %}
                 <a href="{{coauthor_url}}">{{author.first}} {{author.last}}{% endif %}</a>
