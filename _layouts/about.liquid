@@ -28,7 +28,7 @@ layout: default
       </div>
     {% endif %}
     
-    <div class="col-sm-9 cleafix">
+    <div class="col-sm-9">
       <h1 class="post-title">
         {% if site.title == 'blank' %}
           {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
@@ -48,12 +48,12 @@ layout: default
       {% endif %}
     </div>
 
-    <div>{{ content }}</div>
+    <div class="clearfix">{{ content }}</div>
 
     <!-- News -->
     {% if page.news and site.announcements.enabled %}
       <h2>
-        <a href="{{ '/News/' | relative_url }}" style="color: inherit">news</a>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
