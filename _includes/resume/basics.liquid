@@ -20,10 +20,12 @@
         {% elsif content[0] == 'phone' %}
           <a href="tel:{{ content[1] }}">{{ content[1] }}</a>
         {% else %}
-          {% assign bullets = content[1] | split: ';' %}
-          {% for bullet in bullets %}
-            <li>{{ bullet }}</li>
-          {% endfor %}
+          <ul>
+            {% assign bullets = content[1] | split: ';' %}
+            {% for bullet in bullets %}
+              <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
         {% endif %}
       </td>
     </tr>
