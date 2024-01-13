@@ -40,13 +40,13 @@
           </h6>
           <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.institution }}</h6>
           <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">{{ content.area }}</h6>
-          <ul class="items">
+          {% comment %} <ul class="items">
             {% for item in content.courses %}
               <li>
                 <span class="item">{{ item }}</span>
               </li>
             {% endfor %}
-          </ul>
+          </ul> {% endcomment %}
         </div>
       </div>
     </li>
