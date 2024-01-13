@@ -149,7 +149,11 @@
     {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
     {% assign thesis = 'thesis,mastersthesis,phdthesis' | split: ',' %}
     {% if entry.type == 'article' %}
-      {% capture entrytype %}<em>{{entry.journal}}</em>{% endcapture %}
+      {% if entry.review %}
+        {% capture entrytype %}<em>Under review at {{entry.journal}}</em>{% endcapture %}
+      {% else  %}
+        {% capture entrytype %}<em>{{entry.journal}}</em>{% endcapture %}
+      {% endif %}
     {% elsif proceedings contains entry.type %}
       {% if entry.review %}
         {% capture entrytype %}<em>Under review at {{entry.booktitle}}</em> {% endcapture %}

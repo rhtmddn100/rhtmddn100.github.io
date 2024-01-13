@@ -21,7 +21,8 @@
           <a href="tel:{{ content[1] }}">{{ content[1] }}</a>
         {% else %}
           <ul>
-            {% assign bullets = content[1] | split: ';' %}
+            {% assign btext = content[1] %}
+            {% assign bullets = btext | split: ';' %}
             {% for bullet in bullets %}
               <li>{{ bullet }}</li>
             {% endfor %}
