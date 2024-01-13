@@ -9,3 +9,4 @@ _layouts/bib.liquid
 _layouts/cv.liquid
 _includes/resume/work.liquid
 _includes/resume/education.liquid
+_news/announcement_2.md

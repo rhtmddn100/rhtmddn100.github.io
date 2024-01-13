@@ -27,31 +27,33 @@ layout: default
         {% endif %}
       </div>
     {% endif %}
-
-    <h1 class="post-title clearfix">
-      {% if site.title == 'blank' %}
-        {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </h1>
-    <p class="desc clearfix">{{ page.subtitle }}</p>
     
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social clearfix">
-        <div class="contact-icons">{% include social.liquid %}</div>
+    <div class="col-sm-9 cleafix">
+      <h1 class="post-title">
+        {% if site.title == 'blank' %}
+          {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </h1>
+      <p class="desc">{{ page.subtitle }}</p>
+    
+      <!-- Social -->
+      {% if page.social %}
+        <div class="social">
+          <div class="contact-icons">{% include social.liquid %}</div>
 
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
+          <div class="contact-note">{{ site.contact_note }}</div>
+        </div>
+      {% endif %}
+    </div>
 
     <div>{{ content }}</div>
 
     <!-- News -->
     {% if page.news and site.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        <a href="{{ '/News/' | relative_url }}" style="color: inherit">news</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
