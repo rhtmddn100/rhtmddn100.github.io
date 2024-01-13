@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Started Master's program at Graduate School of Data Science, Seoul National University
+Started Master's program at [Graduate School of Data Science, Seoul National University](https://gsds.snu.ac.kr)

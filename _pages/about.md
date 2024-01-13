@@ -9,7 +9,6 @@ subtitle: |+
   <br>
   <br>
   <br>
-  <br> 
 
 profile:
   align: right
