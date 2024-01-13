@@ -23,6 +23,7 @@
           {% assign bullets = content[1] | split: ';' %}
           {% for bullet in bullets %}
             <li>{{ bullet }}</li>
+          {% endfor %}
         {% endif %}
       </td>
     </tr>

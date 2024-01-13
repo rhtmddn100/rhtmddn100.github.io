@@ -72,9 +72,9 @@
 
         {% if forloop.length == 1 %}
           {% if author_is_self %}
-            <em>{{author.first}} {{author.last}}</em>
+            <em>{{ author.first }} {{ author.last }}</em>
           {% else %}
-            {{author.first}} {{author.last}}
+            {{ author.first }} {{ author.last }}
           {% endif %}
         {% else %}
           {% unless forloop.last %}
@@ -92,12 +92,12 @@
           {% else %}
             {% if author_array_limit == author_array_size %}and {% endif %}
             {% if author_is_self %}
-              <em>{{author.first}} {{auhtor.last}}</em>
+              <em>{{ author.first }} {{ auhtor.last }}</em>
             {% else %}
               {% if coauthor_url %}
-                <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>
+                <a href="{{coauthor_url}}">{{ author.first }} {{ author.last }}</a>
               {% else %}
-                {{author.first}} {{author.last}}
+                {{ author.first }} {{ author.last }}
               {% endif %}
             {% endif %}
           {% endunless %}
@@ -145,7 +145,11 @@
     {% if entry.type == 'article' %}
       {% capture entrytype %}<em>{{entry.journal}}</em>{% endcapture %}
     {% elsif proceedings contains entry.type %}
-      {% capture entrytype %}<em>In {{entry.booktitle}}</em> {% endcapture %}
+      {% if entry.review %}
+        {% capture entrytype %}<em>Under review at {{entry.booktitle}}</em> {% endcapture %}
+      {% else  %}
+        {% capture entrytype %}<em>In {{entry.booktitle}}</em> {% endcapture %}
+      {% endif %}
     {% elsif thesis contains entry.type %}
       {% capture entrytype %}<em>{{entry.school}}</em> {% endcapture %}
     {% else %}
