@@ -10,10 +10,12 @@ related_publications: true
 
 ## Motivation
 
-Chemical-Reaction-Aware Molecule Representation Learning (MolR) was published in ICLR 2022, utilizing reaction data (USPTO-479k) to pretrain molecular GNN.
+[Chemical-Reaction-Aware Molecule Representation Learning (MolR)](https://openreview.net/forum?id=6sh3pIzKS-) was published in ICLR 2022, utilizing reaction data (USPTO-479k) to pretrain molecular GNN.
 Their proposal was to use chemical equivalence between reactants and products in a chemical reaction. In representation learning, this proposal means that the sum of embeddings of the reactants are enforced to be equal to that of embeddings of products.
 
+$$\sum_{r\in R}h_r = \sum_{p \in P}h_p$$
 
+More details on this paper is given in my blog [post](https://example.com).
 
 Every project has a beautiful feature showcase page.
 It's easy to include images in a flexible 3-column grid format.
