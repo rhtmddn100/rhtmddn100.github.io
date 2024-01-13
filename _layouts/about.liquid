@@ -28,16 +28,25 @@ layout: default
       </div>
     {% endif %}
 
-    <h1 class="post-title">
+    <h1 class="post-title clearfix">
       {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
+        {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
       {% else %}
         {{ site.title }}
       {% endif %}
     </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-    <div class="clearfix">{{ content }}</div>
+    <p class="desc clearfix">{{ page.subtitle }}</p>
+    
+    <!-- Social -->
+    {% if page.social %}
+      <div class="social clearfix">
+        <div class="contact-icons">{% include social.liquid %}</div>
+
+        <div class="contact-note">{{ site.contact_note }}</div>
+      </div>
+    {% endif %}
+
+    <div>{{ content }}</div>
 
     <!-- News -->
     {% if page.news and site.announcements.enabled %}
@@ -63,13 +72,5 @@ layout: default
       {% include selected_papers.liquid %}
     {% endif %}
 
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
   </article>
 </div>
