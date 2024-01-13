@@ -70,24 +70,37 @@
           {% endfor %}
         {% endif %}
 
-        {% if forloop.length > 1 %}
-          {% if forloop.first == false %},&nbsp;{% endif %}
-          {% if forloop.last and author_array_limit == author_array_size %}and&nbsp;{% endif %}
-        {% endif %}
-        {% if author_is_self %}
-          <em>
-            {{- author.first }}
-            {{ author.last -}}
-          </em>
-        {% else %}
-          {% if coauthor_url %}
-            <a href="{{coauthor_url}}">
-              {{- author.first }}
-              {{ author.last -}}
-            </a>
+        {% if forloop.length == 1 %}
+          {% if author_is_self %}
+            <em>{{author.first}} {{author.last}}</em>{%- endif -%}
           {% else %}
-            {{ author.first }} {{ author.last }}
+            {{author.first}} {{author.last}}
           {% endif %}
+        {% else %}
+          {% unless forloop.last %}
+            {% if author_is_self %}<em>{{- author.first }} {{ author.last -}}</em>{% endif %},&nbsp;
+            {% else %}
+              {% if coauthor_url %}
+                <a href="{{coauthor_url}}">
+                {{- author.first }}
+                {{ author.last -}}
+                </a>
+              {% else %}
+                {{ author.first }} {{ author.last }},&nbsp
+              {% endif %}
+            {% endif %}
+          {% else %}
+            {% if author_array_limit == author_array_size %}and {% endif %}
+            {% if author_is_self %}
+              <em>{{author.first}} {{auhtor.last}}</em>{% endif %}
+            {% else %}
+              {% if coauthor_url %}
+                <a href="{{coauthor_url}}">{{author.first}} {{author.last}}{% endif %}</a>
+              {% else %}
+                {{author.first}} {{author.last}}
+              {% endif %}
+            {% endif %}
+          {% endunless %}
         {% endif %}
       {% endfor %}
       {% assign more_authors = author_array_size | minus: author_array_limit %}
