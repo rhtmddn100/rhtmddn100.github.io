@@ -1,0 +1,209 @@
+---
+layout: post
+title: MolR - Chemical-Reaction-Aware Molecule Representation Learning
+date: 2023-07-19 16:40:16
+description: ICLR 2022
+tags: paper review
+categories:
+---
+
+# MolR: Chemical-Reaction-Aware Molecule Representation Learning
+
+Created: July 19, 2023 9:02 PM
+Tags: Molecule
+Conference: ICLR
+Year: 2022
+Status: Reviewed
+Paper Link: https://openreview.net/pdf?id=6sh3pIzKS-
+
+## Main Idea
+
+- Molecule representation learning using chemical reaction data
+- Enforce chemical equivalence as pretraining condition for learning molecule representation
+
+## 1. Introduction
+
+### Background
+
+- Molecule representation is a fundamental and crucial problem in chemistry
+- Molecule representation learning (MRL) is proposed to map molecules into a low-dimensional real space and represent them as dense vectors, which can benefit a wide range of downstream tasks in chemistry, such as chemical reaction prediction, molecule property prediction, and drug discovery.
+    1. SMILES-based MRL (Mol-BERT, ChemBERTa, SMILES-BERT, etc.) suffer from 1D representation not incorporating structure of molecules
+    2. GNN-based MRL only focuses on GNN architecture rather than generalizability of the representation to diverse downstream tasks
+
+### Proposal - MolR
+
+- Use chemical reactions to assist learning molecular representation and improve generalization ability
+- Chemical reaction —> implies **chemical equivalence** between reactants and products —> apply this to molecule representation learning
+    1. Molecule embeddings are composable with respect to chemical reactions, making the embedding space well-organized
+    2. Implicitly learn reaction templates under certain model conditions
+- Example: Fisher esterification of acetic acid and ethanol
+    
+    $$
+    \text{Fisher esterification}: \text{CH}_3\text{COOH}+\text{C}_2\text{H}_5\text{OH}\rightarrow\text{CH}_3\text{COOC}_2\text{H}_5+\text{H}_2\text{O}
+    $$
+    
+    - Make the embeddings of the reactants (produced from GNN) equal to the embeddings of the products
+    
+    $$
+    h(\text{CH}_3\text{COOH})+h(\text{C}_2\text{H}_5\text{OH})=h(\text{CH}_3\text{COOC}_2\text{H}_5)+h(\text{H}_2\text{O})
+    $$
+    
+
+## 2. Method
+
+### 1) Molecule Encoder (GNN)
+
+- Molecule —> $G=(V,E)$, where $V=\{a1,...\}$ is set of non-hydrogen atoms and $E=\{b_1,...\}$ is set of bonds
+- Each node (non-hydrogen atom) has an initial feature vector composed of [element type, charge, whether the atom is aromatic ring, number of hydrogen atoms attached]
+- GNN formal definition
+    - At each layer: apply aggregate function to the node embeddings of previous layer, but only take account of the node itself and the neighbors
+        
+        $$
+        h_i^k=\text{AGGREGATE}(\{h_j^{k-1}\}_{j\in\mathcal{N}(i)\cup{i}}),k=1,...,K
+        $$
+        
+    - At the final layer: apply readout function to obtain the representation of the whole graph (readout = summation, average, pooling, etc.)
+    
+    $$
+    h_G=\text{READOUT}(\{h_i^K\}_{a_i\in V})
+    $$
+    
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled.png)
+
+### 2) Chemical Equivalence Condition
+
+- Assert that the sum of embeddings of reactants should equal the sum of embeddings of products
+- Chemical equivalence formal definition
+    - Given a chemical reaction with reactant set $R=\{r_1,r_2, ...\}$ and product set $P=\{p_1,p_2,...\}$
+    
+    $$
+    \sum_{r\in R}h_r=\sum_{p\in P}h_p
+    $$
+    
+- ****************Proposition 1: c****************hemical reaction relation “—>” is an equivalence relation satisfying reflexivity, symmetry, transitivity
+    - All subsets of the molecule space can be divided into equivalence classes
+    - Chemical equivalence works as a system of linear equations that impose strong constraint on the embeddings of “basic” molecules (molecules frequently used in chemical equations/synthesis) —> chemical space becomes more organized
+
+- **************************Proposition 2**************************: with certain model conditions, the residual between reactant embedding and product embedding (MolR training objective) fully and only depend on atoms that are less than K hops away from the reaction center
+    
+    (K = number of GNN layers, require READOUT function to be summation)
+    
+    - Reaction center (orange in figure): where actual atomic changes occurs
+    - Hops: passing through one edge (=bond) (figure on the right shows 2 hop molecules in light orange)
+    - **********************Implication**********************: by controlling the number of layers (K) of GNN, we can control which atoms affect our loss term, meaning our model essentially only processes nearby atoms from the reaction center
+    - These nearby atoms from the reaction center form ***********************************reaction template***********************************
+    - Model can easily generalize to unseen data with known reaction template since the “K hop atoms from reaction center” will be essentially the same
+    - Example: Fisher esterification of propionic acid and propanol
+        
+        $$
+        \text{Fisher esterification}: \text{CH}_3\text{CH}_2\text{COOH}+\text{CH}_3\text{CH}_2\text{CH}_2\text{OH}\rightarrow\text{CH}_3\text{CH}_2\text{COO}\text{CH}_2\text{CH}_2\text{CH}_3+\text{H}_2\text{O}
+        $$
+        
+        - Make the embeddings of the reactants (produced from GNN) equal to the embeddings of the products
+        
+        $$
+        h(\text{CH}_3\text{CH}_2\text{COOH})+h(\text{CH}_3\text{CH}_2\text{CH}_2\text{OH})=h(\text{CH}_3\text{CH}_2\text{COO}\text{CH}_2\text{CH}_2\text{CH}_3)+h(\text{H}_2\text{O})
+        $$
+        
+        - Proposition 2 implies that we can apply the same equivalence only looking at K hop atoms from the reaction center, assuming K = 2, we can ignore all other atomC
+        
+        $$
+        h(\text{R}_1-\text{CH}_2\text{COOH})+h(\text{R}_2-\text{CH}_2\text{CH}_2\text{OH})=h(\text{R}_1-\text{CH}_2\text{COO}\text{CH}_2\text{CH}_2-\text{R}_2)+h(\text{H}_2\text{O})
+        $$
+        
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%201.png)
+
+### 3) Training
+
+- Need negative samples to train chemical equivalence because without negatives, model just outputs all embeddings as 0
+- Solution: use other samples in minibatch as negatives
+    - Construct matrix of reactant sets against product sets in the minibatch (see figure)
+    - Diagonals: real reactant-product pairs —> positives
+    - Off-diagonals: randomly matched reactant-product pairs —> negatives
+    - Resulting loss function with $\gamma>0$ as margin hyperparameter
+    
+    $$
+    L_\mathcal{B}= {1\over{|\mathcal{B}|}}\sum_i||\sum_{r\in R_i}h_r-\sum_{p\in P_i}h_p||_2+{1\over|\mathcal{B}(\mathcal{B}-1)}\sum_{i\neq j}\max(\gamma-||\sum_{r\in R_i}h_r-\sum_{p\in P_j}h_p||_2,0)
+    $$
+    
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%202.png)
+
+## 3. Experiments
+
+### 1) Reaction Product Prediction
+
+- Given reactants, predict what product should be produced after chemical reaction
+- Dataset: USPTO-479k, each reaction instance contains SMILES strings of up to five reactants and one product
+- Protocol: ranking problem
+    - Rank all products in test set according to their L2 distance to reactants in test set
+    - Metrics: MRR (mean reciprocal rank), MR (mean rank), Hit @1, 3, 5, 10 (hit ratio)
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%203.png)
+
+- Baselines
+    - Mol2vec, MolBERT as given in the paper
+    - FT means the models were fine tuned with USPTO-479k data
+- Overall achieved good results in this task compared to the baselines even with very small amount of training data (1%)
+
+<aside>
+👈 Comment: this task design makes MolR very good at this task, since MolR explicitly trains to minimize the residual between reactant embeddings and product embeddings, and this task ranks the distance between reactant and product embeddings
+
+</aside>
+
+- Realistic scenario tests
+    - Collected 16 multi-choice questions on product prediction from online resources
+    - Questions provide reactants and asks to select the correct product out of multiple choices
+    - Good results on the real reaction prediction
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%204.png)
+
+### 2) Molecule Property Prediction
+
+- Predict important molecule properties using the pretrained embeddings
+- Dataset: BBBP, HIV, BACE, Tox21, ClinTox —> binary classification datasets of five important molecule properties with input as SMILES string
+- Protocol: use pretrained GNN to output molecule embeddings, then train a Logistic Regression model for binary classification from the embeddings
+    - Metrics: mean AUC
+- Baseline: most taken from literature
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%205.png)
+
+- MolR achieved SOTA values on all datasets except for ClinTox
+
+### 3) Chemical Reaction Classification
+
+- Predict reaction class that chemical reaction belongs to
+- Dataset: USPTO-1k-TPL, containing reactions with reaction class label
+- Protocol: use pretrained model to output concatenation of reactant and product, then use MLP with two 2048-dim hidden layers as classifier
+- Baseline: most taken from literature
+- Not the best method but on par performance
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%206.png)
+
+### 4) Graph-Edit-Distance Prediction
+
+- Predict GED, measure of similarity between two graphs (as minimum number of graph edit operations to transform one to another)
+- Dataset: random pairs of sample from QM9 with ground-truth GED
+- Protocol: use pretrained model to output embedding for each molecule
+    - Concatenation: concatenate the embeddings of the pair of molecules
+    - Subtract: take the difference between the embeddings of the pair of molecules
+- Baseline: Mol2Vec, MolBERT
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%207.png)
+
+- Good results compared to baseline
+
+### 5) Embedding Visualization
+
+1. Embedding space visualization with tSNE for BBBP dataset
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%208.png)
+
+- Embedding space is well organized according to the property, structural similarity, molecule size, and number of rings
+1. Reaction template learning and chemical composition
+
+![Untitled](MolR%20Chemical-Reaction-Aware%20Molecule%20Representati%2070e8b20eef2e450ebb18e80e31492638/Untitled%209.png)
+
+- The direction of embedding is the same for same type of reaction, proving that the pretraining scheme learns reaction templates
