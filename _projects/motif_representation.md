@@ -5,7 +5,7 @@ description: Pretraining a GNN model using molecule's motifs and reaction data f
 img:
 importance: 1
 category: Research
-related_publications: true
+related_publications: false
 ---
 
 ## Motivation
@@ -30,5 +30,21 @@ Enforcing such motif-level equivalence is hypothesized to have several useful ou
 
 ### Overall Training Objective
 
-### Motif Generation
+The overall training objective is similar to MolR, with the addition of the motif-level equivalence loss.
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/motif/motif.jpg" title="motif representation" class="img-fluid z-depth-0" %}
+    </div>
+</div>
+<div class="caption">
+    Illustration of how reaction-level and motif-level loss is applied to a reaction.
+</div>
+
+### Motif Extraction
+
+In order to pretrain the GNN using the motif-level equivalence loss, we need to extract the motifs for all molecules in the dataset. Specifically, since we are utilizing a reaction data (USPTO-479k), we need to identify all unique molecules in USPTO-479k and define a motif set for each molecule.
+
+For motif extraction, connection-aware method proposed in [De Novo Molecular Generation via Connection-aware Motif Mining (MiCaM)](https://openreview.net/forum?id=Q_Jexl8-qDi) was used. This method extracts motifs using frequency based method and also keeps the connection information when breaking the molecule into motif fragments.
+
+#### 1) 
