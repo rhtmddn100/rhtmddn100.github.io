@@ -2,7 +2,7 @@
 layout: page
 title: Rock, Paper, Scissors
 description: Using data augmentation to utilize limited data for rock, paper, scissors classifcation with CNN model.
-img: assets/img/motif.jpg
+img:
 importance: 3
 category: Course Work
 related_publications: false
