@@ -28,7 +28,7 @@
       "startDate": "2022-01-10",
       "endDate": "2024-02-29",
       "summary": "Molecular Representation Learning: Developed methods to utilize molecular motifs and chemical reaction data to train molecular representation. Aided in developing physics-informed molecular representation and published a research paper in UAI 2023.;Object Segmentation: Proposed a topic for computer vision class project and led a team of four students in developing novel decoding architecture for Camouflaged Object Detection (COD) task. Achieved state-of-the-art performances in COD task and submitted a research paper to CVPR 2024.;XAI in Drug Discovery: Currently working on developing visualization framework for drug screening models to enhance explainability of AI-based drug discovery research.",
-      "highlights":
+      "highlights": []
     },
     {
       "name": "Catalysis and Process Integration Group, University of Cambridge",
@@ -37,7 +37,7 @@
       "startDate": "2018-10-01",
       "endDate": "2019-06-30",
       "summary": "Worked in the process integration and catalysis lab as part of final year research project as an undergraduate researcher for over 15 hours per week.;Focused on the role of ruthenium nanoparticles as ammonia decomposition catalyst and using a continuous flow reactor to produce ruthenium nanoparticles with controlled sizes.;Successfully created ruthenium nanoparticle catalyst comparable to the state-of-art used for ammonia decomposition, which can be a stepping stone in utilizing ammonia as a safe and cost-effective storage solution for storing hydrogen.",
-      "highlights":
+      "highlights": []
     },
     {
       "name": "Hyosung ITX",
@@ -46,7 +46,7 @@
       "startDate": "2018-07-15",
       "endDate": "2018-08-31",
       "summary": "Worked with statistical analysts in the smart factory team, developing statistical analysis tools, such as process management system and alarm management system. Provided these tools to various chemical factories in Korea and China, such as the Spandex factory in Guangdong, China.;Programmed extensively in R language and created several data analysis libraries to be used in the team using R language, such as change point detection, distribution classification, and basic statistical analysis libraries.;Aided in creating English manual guides for the process management and alarm analysis tools to be used in the Guangdong Spandex factory developed by the team.",
-      "highlights":
+      "highlights": []
     }
   ],
   "volunteer": [
