@@ -8,7 +8,7 @@ category: Course Work
 related_publications: false
 ---
 
-*This project was the final project for Software and Programming for Data Science class at Seoul National University.*
+*This project was the final project for Software and Programming for Data Science (Fall 2021) class at Seoul National University.*
 
 ## Problem Setting
 
@@ -16,15 +16,17 @@ The goal of the project was to train a CNN model to classify real-world rock, pa
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/rps/rock_data.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/rps/paper_data.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/rps/scissors_data.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
     Example of rock, paper, and scissors images in the training dataset.
 </div>
+
+
