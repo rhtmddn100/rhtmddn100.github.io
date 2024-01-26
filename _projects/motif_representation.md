@@ -47,4 +47,7 @@ In order to pretrain the GNN using the motif-level equivalence loss, we need to 
 
 For motif extraction, connection-aware method proposed in [De Novo Molecular Generation via Connection-aware Motif Mining (MiCaM)](https://openreview.net/forum?id=Q_Jexl8-qDi) was used. This method extracts motifs using frequency based method and also keeps the connection information when breaking the molecule into motif fragments.
 
-#### 1) 
+#### 1) Motif Vocabulary Construction
+Motif vocabulary for all molecules in a dataset is constructed as follows:
+1. At the start of the construction, all molecules have its atoms as motifs (i.e. motifs are all single atom).
+2. At each iteration 
