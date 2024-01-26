@@ -29,4 +29,11 @@ The goal of the project was to train a CNN model to classify real-world rock, pa
     Example of rock, paper, and scissors images in the training dataset.
 </div>
 
+## Data Augmentation
 
+In order to overcome the limitation in data, I used several data augmentation strategies to mimic the real-world rock, paper, and scissors images.
+The differences in the given train dataset and the real world test data set were as follows:
+- Different background (white vs. real world)
+- Position (upright vs. rotated)
+- Orientation (left hand vs. mixed)
+- Hand shape ()
