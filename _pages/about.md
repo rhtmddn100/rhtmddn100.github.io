@@ -3,7 +3,7 @@ layout: about
 title: About
 permalink: /
 subtitle: |+ 
-  <strong>Master's Student</strong> at <a href='https://www.snu.ac.kr/index.html'>Seoul National University</a>.<br>
+  <strong>Research Scientist</strong> at Materials Intelligence Lab, <a href='https://www.lgresearch.ai/'>LG AI Research</a>.<br>
   <br>
   <br>
   <br>

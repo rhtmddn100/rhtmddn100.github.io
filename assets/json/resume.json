@@ -22,6 +22,15 @@
   },
   "experiences": [
     {
+      "name": "Materials Intelligence Lab, LG AI Research",
+      "position": "Research Scientist",
+      "url": "https://www.lgresearch.ai",
+      "startDate": "2024-03-04",
+      "endDate": "",
+      "summary": "Member of Materials Intelligence Lab.",
+      "highlights": []
+    },
+    {
       "name": "Visual Information Processing Lab, Seoul National University",
       "position": "Graduate Researcher",
       "url": "http://viplab.snu.ac.kr/index.html",
@@ -40,7 +49,7 @@
       "highlights": []
     },
     {
-      "name": "Hyosung ITX",
+      "name": "Smart Factory Team, Hyosung ITX",
       "position": "Statistical Analyst Intern",
       "url": "https://www.hyosungitx.com/ko/main.do",
       "startDate": "2018-07-15",
