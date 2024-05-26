@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Joined [LG AI Research](https://www.lgresearch.ai/) as Research Scientist in Materials Intelligence Lab.
+Joined [LG AI Research](https://www.lgresearch.ai/) as AI Scientist in Materials Intelligence Lab.

@@ -3,7 +3,7 @@ layout: about
 title: About
 permalink: /
 subtitle: |+ 
-  <strong>Research Scientist</strong> at Materials Intelligence Lab, <a href='https://www.lgresearch.ai/'>LG AI Research</a>.<br>
+  <strong>AI Scientist</strong> at Materials Intelligence Lab, <a href='https://www.lgresearch.ai/'>LG AI Research</a>.<br>
   <br>
   <br>
   <br>
