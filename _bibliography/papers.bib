@@ -1,27 +1,33 @@
 ---
 ---
 
-@inproceedings{yi2023towards,
-  title={Towards Physically Reliable Molecular Representation Learning},
-  author={Yi, Seunghoon and Youngwoo Cho and Sul, Jinhwan and Ko, Seung Woo and Kim, Soo Kyung and Choo, Jaegul and Yoon, Hongkee and Lee, Joonseok},
-  booktitle={Uncertainty in Artificial Intelligence},
-  abbr={UAI},
-  pages={2433--2443},
-  year={2023},
-  organization={PMLR},
-  award={Oral},
-  abstract={Estimating the energetic properties of molecular systems is a critical task in material design. Machine learning has shown remarkable promise on this task over classical force fields, but a fully data-driven approach suffers from limited labeled data; not just the amount of available data lacks, but the distribution of labeled examples is highly skewed to stable states. In this work, we propose a molecular representation learning method that extrapolates well beyond the training distribution, powered by physics-driven parameter estimation from classical energy equations and self-supervised learning inspired from masked language modeling. To ensure reliability of the proposed model, we introduce a series of novel evaluation schemes in multifaceted ways, beyond the energy or force accuracy that has been dominantly used. From extensive experiments, we demonstrate that the proposed method is effective in discovering molecular structures, outperforming other baselines. Furthermore, we extrapolate it to the chemical reaction pathways beyond stable states, taking a step towards physically reliable molecular representation learning.},
-  pdf={https://proceedings.mlr.press/v216/yi23a/yi23a.pdf}
+# 2024
+@inproceedings{hormazabal2024exploring,
+  title={Exploring Neural Scaling Laws in Molecular Pretraining with Synthetic Tasks},
+  author={Hormazabal, Rodrigo and Ko, Seung Woo and Yoo, Inwan and Han, Sehui and Bertens, Paul},
+  booktitle={ICML 2024 AI for Science Workshop},
+  year={2024},
+  pdf={https://openreview.net/attachment?id=8bDtKWSVja&name=pdf},
+  abbr={ICML AI4Science},
+  abstract={Acquiring large-scale annotated molecular datasets has been one of the main bottlenecks in scaling foundational models for chemistry applications. Proprietary issues, cost, and complex experimental setups have led to restrictively small labeled datasets for some predictive tasks. Unlike in language models, where pre-training has shown significant improvements in downstream tasks, molecular pre-training has yet to demonstrate a similar impact. Inspired by the success of neural scaling laws, we explore the impact of synthetic pre-training for molecular machine learning models on their downstream performance. We pre-train models of three sizes (12M, 45M, 230M parameters) using 12 synthetic tasks in an encoder-decoder setup and evaluate their performance across 10 downstream tasks. Our findings reveal a general correlation between pre-training perplexity and downstream task performance, with this relationship varying across different tasks. These insights suggest that pre-training metrics could provide valuable estimates of model performance post-fine-tuning. We pre-train models with over 10B tokens and observe that models saturate, indicating potential for further parameter scaling. This study represents a preliminary exploration of synthetic task pre-training for molecular models, which can be complementary to other pre-training methods such as multi-task learning with labeled data and multimodal learning.},
 }
 
 @inproceedings{ko2024cod,
-  title={ENTO: Decoders for Decoder in Camouflaged Object Detection},
-  author={Ko, Seung Woo and Bang, Seungjai and Hong, Joopyo and Kim, Suyoung and Cho, Sungzoon and Kwak, Nojun and Kim, Hyung-Sin and Lee, Joonseok},
-  booktitle={the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  abbr={CVPR},
-  pages={},
+  title={Scalable Frame Sampling for Video Classification: A Semi-Optimal Policy Approach with Reduced Search Space},
+  author={Lee, Junho and Shin, Jeongwoo and Ko, Seung Woo and Ha, Seongsu and Lee, Joonseok},
+  booktitle={British Machine Vision Conference},
+  abbr={BMVC},
   year={2024},
-  review={underreview}
+  abstract={}
+}
+
+@inproceedings{ko2024cod,
+  title={A Revisit to the Decoder for Camouflaged Object Detection},
+  author={Ko, Seung Woo and Bang, Seungjai and Hong, Joopyo and Kim, Suyoung and Cho, Sungzoon and Kwak, Nojun and Kim, Hyung-Sin and Lee, Joonseok},
+  booktitle={British Machine Vision Conference},
+  abbr={BMVC},
+  year={2024},
+  abstract={Camouflaged object detection (COD) aims to generate a fine-grained segmentation map of camouflaged objects hidden in their background. Due to the hidden nature of camouflaged objects, it is essential for the decoder to be tailored to effectively extract proper features of camouflaged objects and extra-carefully generate their complex boundaries. In this paper, we propose a novel architecture that augments the prevalent decoding strategy in COD with Enrich Decoder and Retouch Decoder, which help to generate a fine-grained segmentation map. Specifically, the Enrich Decoder amplifies the channels of features that are important for COD using channel-wise attention. Retouch Decoder further refines the segmentation maps by spatially attending to important pixels, such as the boundary regions. With extensive experiments, we demonstrate that ENTO shows superior performance using various encoders, with the two novel components playing their unique roles that are mutually complementary.}
 }
 
 @article{el2024continuous,
@@ -35,12 +41,16 @@
   pdf={https://pubs.rsc.org/en/content/articlepdf/2024/re/d3re00585b}
 }
 
-@inproceedings{hormazabal2024exploring,
-title={Exploring Neural Scaling Laws in Molecular Pretraining with Synthetic Tasks},
-author={Hormazabal, Rodrigo and Ko, Seung Woo and Yoo, Inwan and Han, Sehui and Bertens, Paul},
-booktitle={ICML 2024 AI for Science Workshop},
-year={2024},
-url={https://openreview.net/forum?id=8bDtKWSVja},
-abbr={ICML AI4Science},
-abstract={Acquiring large-scale annotated molecular datasets has been one of the main bottlenecks in scaling foundational models for chemistry applications. Proprietary issues, cost, and complex experimental setups have led to restrictively small labeled datasets for some predictive tasks. Unlike in language models, where pre-training has shown significant improvements in downstream tasks, molecular pre-training has yet to demonstrate a similar impact. Inspired by the success of neural scaling laws, we explore the impact of synthetic pre-training for molecular machine learning models on their downstream performance. We pre-train models of three sizes (12M, 45M, 230M parameters) using 12 synthetic tasks in an encoder-decoder setup and evaluate their performance across 10 downstream tasks. Our findings reveal a general correlation between pre-training perplexity and downstream task performance, with this relationship varying across different tasks. These insights suggest that pre-training metrics could provide valuable estimates of model performance post-fine-tuning. We pre-train models with over 10B tokens and observe that models saturate, indicating potential for further parameter scaling. This study represents a preliminary exploration of synthetic task pre-training for molecular models, which can be complementary to other pre-training methods such as multi-task learning with labeled data and multimodal learning.},
+# 2023
+@inproceedings{yi2023towards,
+  title={Towards Physically Reliable Molecular Representation Learning},
+  author={Yi, Seunghoon and Youngwoo Cho and Sul, Jinhwan and Ko, Seung Woo and Kim, Soo Kyung and Choo, Jaegul and Yoon, Hongkee and Lee, Joonseok},
+  booktitle={Uncertainty in Artificial Intelligence},
+  abbr={UAI},
+  pages={2433--2443},
+  year={2023},
+  organization={PMLR},
+  award={Oral},
+  abstract={Estimating the energetic properties of molecular systems is a critical task in material design. Machine learning has shown remarkable promise on this task over classical force fields, but a fully data-driven approach suffers from limited labeled data; not just the amount of available data lacks, but the distribution of labeled examples is highly skewed to stable states. In this work, we propose a molecular representation learning method that extrapolates well beyond the training distribution, powered by physics-driven parameter estimation from classical energy equations and self-supervised learning inspired from masked language modeling. To ensure reliability of the proposed model, we introduce a series of novel evaluation schemes in multifaceted ways, beyond the energy or force accuracy that has been dominantly used. From extensive experiments, we demonstrate that the proposed method is effective in discovering molecular structures, outperforming other baselines. Furthermore, we extrapolate it to the chemical reaction pathways beyond stable states, taking a step towards physically reliable molecular representation learning.},
+  pdf={https://proceedings.mlr.press/v216/yi23a/yi23a.pdf}
 }

@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One paper accepted to ICML AI for Science Workshop.
+One paper accepted to ICML AI for Science Workshop 2024.
