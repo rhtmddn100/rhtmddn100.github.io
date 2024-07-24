@@ -27,7 +27,7 @@
   booktitle={British Machine Vision Conference},
   abbr={BMVC},
   year={2024},
-  abstract={}
+  abstract={Given a video with $T$ frames, frame sampling is a task to select $N \ll T$ frames, so as to maximize the performance of a fixed video classifier. Not just brute-force search, but most existing methods suffer from its vast search space of $\binom{T}{N}$, especially when $N$ gets large. To address this challenge, we introduce a novel perspective of reducing the search space from $O(T^N)$ to $O(T)$. Instead of exploring the entire $O(T^N)$ space, our proposed semi-optimal policy selects the top $N$ frames based on the independently estimated value of each frame using per-frame confidence, significantly reducing the computational complexity. We verify that our semi-optimal policy can efficiently approximate the optimal policy, particularly under practical settings. Additionally, through extensive experiments on various datasets and model architectures, we demonstrate that learning our semi-optimal policy ensures stable and high performance regardless of the size of $N$ and $T$.}
 }
 
 @article{el2024continuous,
@@ -54,5 +54,6 @@
   abstract={Estimating the energetic properties of molecular systems is a critical task in material design. Machine learning has shown remarkable promise on this task over classical force fields, but a fully data-driven approach suffers from limited labeled data; not just the amount of available data lacks, but the distribution of labeled examples is highly skewed to stable states. In this work, we propose a molecular representation learning method that extrapolates well beyond the training distribution, powered by physics-driven parameter estimation from classical energy equations and self-supervised learning inspired from masked language modeling. To ensure reliability of the proposed model, we introduce a series of novel evaluation schemes in multifaceted ways, beyond the energy or force accuracy that has been dominantly used. From extensive experiments, we demonstrate that the proposed method is effective in discovering molecular structures, outperforming other baselines. Furthermore, we extrapolate it to the chemical reaction pathways beyond stable states, taking a step towards physically reliable molecular representation learning.},
   pdf={https://proceedings.mlr.press/v216/yi23a/yi23a.pdf},
   poster={https://www.auai.org/uai2023/posters/95.pdf},
-  slides={https://www.auai.org/uai2023/oral_slides/95-oral-slides.pdf}
+  slides={https://www.auai.org/uai2023/oral_slides/95-oral-slides.pdf},
+  video={https://www.youtube.com/watch?v=AUdoxYVy6Hc}
 }
