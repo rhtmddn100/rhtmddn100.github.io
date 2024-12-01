@@ -29,9 +29,9 @@ permalink: /travel/
         style: (feature) => {
           const visitedCountries = ["France", "Switzerland"]; // List of visited countries
           return {
-            color: visitedCountries.includes(feature.properties.NAME) ? "blue" : "gray",
+            color: visitedCountries.includes(feature.properties.ADMIN) ? "blue" : "gray",
             weight: 1,
-            fillOpacity: visitedCountries.includes(feature.properties.NAME) ? 0.6 : 0,
+            fillOpacity: visitedCountries.includes(feature.properties.ADMIN) ? 0.6 : 0,
           };
         },
         onEachFeature: (feature, layer) => {
