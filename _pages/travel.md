@@ -17,9 +17,18 @@ permalink: /travel/
   const map = L.map('map').setView([20, 0], 1); // Initial view (latitude, longitude, zoom level)
   map.setMaxBounds([[90, -180], [-90, 180]]);
 
+  const doubleCircleIcon = L.icon({
+    iconUrl: '/assets/img/dc_icon.svg', // Path to your SVG file
+    iconSize: [20, 20], // Adjust size as needed
+    iconAnchor: [10, 10], // Center the icon
+    popupAnchor: [0, -10], // Position the popup
+  });
+
   // Add a clean tile layer
-  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://stamen.com/">Stamen Design</a>',
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19,
   }).addTo(map);
 
   const places = {{ site.data.places.places | jsonify }};
