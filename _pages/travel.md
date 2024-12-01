@@ -11,46 +11,35 @@ permalink: /travel/
 <!-- Include Leaflet.js and its styles -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 
 <script>
   // Initialize the map
   const map = L.map('map').setView([20, 0], 2); // Initial view (latitude, longitude, zoom level)
 
-  // Add a tile layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  // Add a tile layer for clean borders
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
   }).addTo(map);
 
-  // Define visited countries as polygons (GeoJSON format)
-  const countries = [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[8.2275, 46.8182], [8.23, 47.818], [9.23, 47.81], [9.2275, 46.8182], [8.2275, 46.8182]]] // Example Switzerland
-      },
-      "properties": {
-        "name": "Switzerland"
-      }
-    }
-  ];
-
-  L.geoJSON(countries, {
-    style: { color: 'blue', fillOpacity: 0.4 },
-  }).addTo(map);
-
-  // Add markers for visited cities
-  const cities = [
-    { name: "Zurich", lat: 47.3769, lon: 8.5417 },
-    { name: "Paris", lat: 48.8566, lon: 2.3522 },
-  ];
-
-  cities.forEach(city => {
-    L.marker([city.lat, city.lon])
-      .addTo(map)
-      .bindPopup(`<b>${city.name}</b>`);
-  });
+  // Load GeoJSON country borders
+  fetch('/assets/geojson/ne_110m_admin_0_countries.geojson')
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        style: (feature) => {
+          // Highlight visited countries in a different color
+          const visitedCountries = ["France", "Switzerland"]; // Update this list with your visited countries
+          return {
+            color: visitedCountries.includes(feature.properties.NAME) ? "blue" : "gray",
+            weight: 1,
+            fillOpacity: visitedCountries.includes(feature.properties.NAME) ? 0.6 : 0,
+          };
+        },
+        onEachFeature: (feature, layer) => {
+          // Add a popup with the country name
+          layer.bindPopup(`<b>${feature.properties.NAME}</b>`);
+        },
+      }).addTo(map);
+    })
+    .catch(error => console.error("Error loading GeoJSON:", error));
 </script>
