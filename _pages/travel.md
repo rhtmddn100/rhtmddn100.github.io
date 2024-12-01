@@ -31,7 +31,7 @@ permalink: /travel/
     maxZoom: 19,
   }).addTo(map);
 
-  const places = {{ site.data.places.places | jsonify }};
+  const places = {{ site.data.travel.places | jsonify }};
 
   // Highlight visited countries using GeoJSON
   fetch('/assets/geojson/countries.geojson') // Adjust the path to your GeoJSON file
@@ -58,7 +58,7 @@ permalink: /travel/
   // Add markers for visited cities
   places.forEach(place => {
     place.cities.forEach(city => {
-      L.marker([city.lat, city.lon])
+      L.marker([city.lat, city.lon], { icon: doubleCircleIcon })
         .addTo(map)
         .bindPopup(`<b>${city.name}</b>`);
     });
