@@ -61,7 +61,7 @@ nav_order: 7
           const isVisited = visitedCountries.includes(countryName);
           return {
             color: isVisited ? "blue" : "gray",
-            weight: 1,
+            weight: isVisited ? 1 : 0,
             fillOpacity: isVisited ? 0.6 : 0,
           };
         },

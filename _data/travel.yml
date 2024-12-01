@@ -9,7 +9,7 @@ places:
         start_date: "2024-11-25"
         end_date: "2024-11-29"
   - country: Netherlands
-    code: nl
+    flag: nl
     continent: Europe
     cities:
       - name: Amsterdam
