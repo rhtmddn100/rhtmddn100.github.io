@@ -1,0 +1,11 @@
+places:
+  - country: France
+    cities:
+      - name: Paris
+        lat: 48.8566
+        lon: 2.3522
+  - country: Switzerland
+    cities:
+      - name: Zurich
+        lat: 47.3769
+        lon: 8.5417

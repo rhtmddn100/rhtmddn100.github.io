@@ -3,6 +3,7 @@ assets/css/main.scss
 assets/plotly/demo.html
 assets/json/resume.json
 _pages/about.md
+_pages/travel.md
 _sass/_base.scss
 _layouts/about.liquid
 _layouts/bib.liquid

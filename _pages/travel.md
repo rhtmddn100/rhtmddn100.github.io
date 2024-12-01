@@ -15,11 +15,14 @@ permalink: /travel/
 <script>
   // Initialize the map
   const map = L.map('map').setView([20, 0], 1); // Initial view (latitude, longitude, zoom level)
+  map.setMaxBounds([[90, -180], [-90, 180]]);
 
   // Add a clean tile layer
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://stamen.com/">Stamen Design</a>',
   }).addTo(map);
+
+  const places = {{ site.data.places.places | jsonify }};
 
   // Highlight visited countries using GeoJSON
   fetch('/assets/geojson/countries.geojson') // Adjust the path to your GeoJSON file
@@ -27,29 +30,28 @@ permalink: /travel/
     .then(data => {
       L.geoJSON(data, {
         style: (feature) => {
-          const visitedCountries = ["France", "Switzerland"]; // List of visited countries
+          const visitedCountries = places.map(place => place.country);
+          const countryName = feature.properties.ADMIN;
+          const isVisited = visitedCountries.includes(countryName);
           return {
-            color: visitedCountries.includes(feature.properties.ADMIN) ? "blue" : "gray",
+            color: isVisited ? "blue" : "gray",
             weight: 1,
-            fillOpacity: visitedCountries.includes(feature.properties.ADMIN) ? 0.6 : 0,
+            fillOpacity: isVisited ? 0.6 : 0,
           };
         },
         onEachFeature: (feature, layer) => {
-          layer.bindPopup(`<b>${feature.properties.NAME}</b>`);
+          layer.bindPopup(`<b>${feature.properties.ADMIN}</b>`);
         },
       }).addTo(map);
     })
     .catch(error => console.error("Error loading GeoJSON:", error));
 
   // Add markers for visited cities
-  const cities = [
-    { name: "Zurich", lat: 47.3769, lon: 8.5417 },
-    { name: "Paris", lat: 48.8566, lon: 2.3522 },
-  ];
-
-  cities.forEach(city => {
-    L.marker([city.lat, city.lon])
-      .addTo(map)
-      .bindPopup(`<b>${city.name}</b>`);
+  places.forEach(place => {
+    place.cities.forEach(city => {
+      L.marker([city.lat, city.lon])
+        .addTo(map)
+        .bindPopup(`<b>${city.name}</b>`);
+    });
   });
 </script>
