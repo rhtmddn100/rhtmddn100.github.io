@@ -19,7 +19,7 @@ permalink: /travel/
 
   const doubleCircleIcon = L.icon({
     iconUrl: '/assets/img/dc_icon.svg', // Path to your SVG file
-    iconSize: [5, 5], // Adjust size as needed
+    iconSize: [10, 10], // Adjust size as needed
     iconAnchor: [10, 10], // Center the icon
     popupAnchor: [0, -10], // Position the popup
   });

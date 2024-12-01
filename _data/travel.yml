@@ -1,11 +1,11 @@
 places:
-  - country: France
+  - country: United Kingdom
     cities:
-      - name: Paris
-        lat: 48.8566
-        lon: 2.3522
-  - country: Switzerland
+      - name: Glasgow
+        lat: 55.864239
+        lon: -4.251806
+  - country: Netherlands
     cities:
-      - name: Zurich
-        lat: 47.3769
-        lon: 8.5417
+      - name: Amsterdam
+        lat: 52.370216
+        lon: 4.895168
