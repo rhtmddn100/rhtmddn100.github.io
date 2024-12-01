@@ -105,7 +105,10 @@ nav_order: 7
 
     cities.forEach((city) => {
       const listItem = document.createElement("li");
-      listItem.innerHTML = `${city.flag} <strong>${city.name}</strong> (${city.country}): ${city.start_date} - ${city.end_date}`;
+      listItem.innerHTML = `
+        <img src="https://flagcdn.com/w40/${city.flag}.png" alt="${city.country}" style="width: 20px; height: 15px; margin-right: 5px;">
+        <strong>${city.name}</strong> (${city.country}): ${city.start_date} - ${city.end_date}
+      `;
       cityListElement.appendChild(listItem);
     });
   };
