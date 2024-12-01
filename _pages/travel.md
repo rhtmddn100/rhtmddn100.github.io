@@ -14,21 +14,20 @@ permalink: /travel/
 
 <script>
   // Initialize the map
-  const map = L.map('map').setView([20, 0], 2); // Initial view (latitude, longitude, zoom level)
+  const map = L.map('map').setView([20, 0], 1); // Initial view (latitude, longitude, zoom level)
 
-  // Add a tile layer for clean borders
+  // Add a clean tile layer
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
   }).addTo(map);
 
-  // Load GeoJSON country borders
-  fetch('/assets/geojson/ne_110m_admin_0_countries.geojson')
+  // Highlight visited countries using GeoJSON
+  fetch('/assets/geojson/countries.geojson') // Adjust the path to your GeoJSON file
     .then(response => response.json())
     .then(data => {
       L.geoJSON(data, {
         style: (feature) => {
-          // Highlight visited countries in a different color
-          const visitedCountries = ["France", "Switzerland"]; // Update this list with your visited countries
+          const visitedCountries = ["France", "Switzerland"]; // List of visited countries
           return {
             color: visitedCountries.includes(feature.properties.NAME) ? "blue" : "gray",
             weight: 1,
@@ -36,10 +35,21 @@ permalink: /travel/
           };
         },
         onEachFeature: (feature, layer) => {
-          // Add a popup with the country name
           layer.bindPopup(`<b>${feature.properties.NAME}</b>`);
         },
       }).addTo(map);
     })
     .catch(error => console.error("Error loading GeoJSON:", error));
+
+  // Add markers for visited cities
+  const cities = [
+    { name: "Zurich", lat: 47.3769, lon: 8.5417 },
+    { name: "Paris", lat: 48.8566, lon: 2.3522 },
+  ];
+
+  cities.forEach(city => {
+    L.marker([city.lat, city.lon])
+      .addTo(map)
+      .bindPopup(`<b>${city.name}</b>`);
+  });
 </script>
