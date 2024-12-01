@@ -2,11 +2,28 @@
 layout: page
 title: Travel
 permalink: /travel/
+nav_order: 7
 ---
 
 # My Travel Map
 
 <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+
+<div id="city-list-container">
+  <h3>List of Cities Visited</h3>
+  <button id="sort-chronologically">Sort Chronologically</button>
+  <button id="sort-by-continent">Sort by Continent</button>
+  <ul id="city-list"></ul>
+</div>
+
+<style>
+  #city-list-container {
+    margin-top: 20px;
+  }
+  #city-list li {
+    margin: 5px 0;
+  }
+</style>
 
 <!-- Include Leaflet.js and its styles -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -20,7 +37,7 @@ permalink: /travel/
   const doubleCircleIcon = L.icon({
     iconUrl: '/assets/img/dc_icon.svg', // Path to your SVG file
     iconSize: [10, 10], // Adjust size as needed
-    iconAnchor: [10, 10], // Center the icon
+    iconAnchor: [5, 5], // Center the icon
     popupAnchor: [0, -10], // Position the popup
   });
 
@@ -63,4 +80,43 @@ permalink: /travel/
         .bindPopup(`<b>${city.name}</b>`);
     });
   });
+</script>
+
+<script>
+  // JavaScript code goes here
+  const renderCityList = (places, sortBy = "chronologically") => {
+    const cityListElement = document.getElementById("city-list");
+    cityListElement.innerHTML = ""; // Clear the current list
+
+    let cities = places.flatMap((place) =>
+      place.cities.map((city) => ({
+        ...city,
+        country: place.country,
+        flag: place.flag,
+        continent: place.continent,
+      }))
+    );
+
+    if (sortBy === "chronologically") {
+      cities.sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
+    } else if (sortBy === "continent") {
+      cities.sort((a, b) => a.continent.localeCompare(b.continent));
+    }
+
+    cities.forEach((city) => {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `${city.flag} <strong>${city.name}</strong> (${city.country}): ${city.start_date} - ${city.end_date}`;
+      cityListElement.appendChild(listItem);
+    });
+  };
+
+  document.getElementById("sort-chronologically").addEventListener("click", () => {
+    renderCityList(places, "chronologically");
+  });
+
+  document.getElementById("sort-by-continent").addEventListener("click", () => {
+    renderCityList(places, "continent");
+  });
+
+  renderCityList(places);
 </script>
