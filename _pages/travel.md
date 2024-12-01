@@ -6,7 +6,7 @@ permalink: /travel/
 
 # My Travel Map
 
-<div id="map" style="height: 600px; width: 100%; margin-top: 20px;"></div>
+<div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
 
 <!-- Include Leaflet.js and its styles -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -15,11 +15,11 @@ permalink: /travel/
 <script>
   // Initialize the map
   const map = L.map('map').setView([20, 0], 1); // Initial view (latitude, longitude, zoom level)
-  map.setMaxBounds([[90, -180], [-90, 180]]);
+  map.setMaxBounds([[85, -180], [-60, 180]]);
 
   const doubleCircleIcon = L.icon({
     iconUrl: '/assets/img/dc_icon.svg', // Path to your SVG file
-    iconSize: [20, 20], // Adjust size as needed
+    iconSize: [5, 5], // Adjust size as needed
     iconAnchor: [10, 10], // Center the icon
     popupAnchor: [0, -10], // Position the popup
   });
