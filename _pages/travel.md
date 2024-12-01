@@ -83,47 +83,38 @@ nav_order: 7
 </script>
 
 <script>
-  // JavaScript code goes here
-  const renderCityList = (places, sortBy = "chronologically") => {
-    const cityListElement = document.getElementById("city-list");
-    cityListElement.innerHTML = ""; // Clear the current list
+// JavaScript code goes here
+const renderCityList = (places, sortBy = "chronologically") => {
+const cityListElement = document.getElementById("city-list");
+cityListElement.innerHTML = ""; // Clear the current list
 
-    let cities = places.flatMap((place) =>
-      place.cities.map((city) => ({
-        ...city,
-        country: place.country,
-        flag: place.flag,
-        continent: place.continent,
-      }))
-    );
+// Flatten the data into a single array of cities
+let cities = places.flatMap((place) =>
+    place.cities.map((city) => ({
+    ...city,
+    country: place.country,
+    flag: place.flag,
+    continent: place.continent,
+    }))
+);
 
-    if (sortBy === "chronologically") {
-      cities.sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
-    } else if (sortBy === "continent") {
-      cities.sort((a, b) => a.continent.localeCompare(b.continent));
-    }
+if (sortBy === "chronologically") {
+    cities.sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
+} else if (sortBy === "continent") {
+    cities.sort((a, b) => a.continent.localeCompare(b.continent));
+}
 
-    // Group cities by continent if sorting by continent
-    if (sortBy === "continent") {
-        const continents = [...new Set(cities.map((city) => city.continent))];
-        continents.forEach((continent) => {
-        const continentHeader = document.createElement("h4");
-        continentHeader.innerHTML = `<strong>${continent}</strong>`;
-        cityListElement.appendChild(continentHeader);
+// Group cities by continent if sorting by continent
+if (sortBy === "continent") {
+    const continents = [...new Set(cities.map((city) => city.continent))];
+    continents.forEach((continent) => {
+    const continentHeader = document.createElement("h4");
+    continentHeader.innerHTML = `<strong>${continent}</strong>`;
+    cityListElement.appendChild(continentHeader);
 
-        cities
-            .filter((city) => city.continent === continent)
-            .forEach((city) => {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `
-                <img src="https://flagcdn.com/w40/${city.flag}.png" alt="${city.country}" style="width: 20px; height: 15px; margin-right: 5px;">
-                <strong>${city.name}</strong> (${city.country}): ${city.start_date} - ${city.end_date}
-            `;
-            cityListElement.appendChild(listItem);
-            });
-        });
-    } else {
-        cities.forEach((city) => {
+    cities
+        .filter((city) => city.continent === continent)
+        .forEach((city) => {
         const listItem = document.createElement("li");
         listItem.innerHTML = `
             <img src="https://flagcdn.com/w40/${city.flag}.png" alt="${city.country}" style="width: 20px; height: 15px; margin-right: 5px;">
@@ -131,7 +122,19 @@ nav_order: 7
         `;
         cityListElement.appendChild(listItem);
         });
-  };
+    });
+} else {
+    // Render a simple list for chronological order
+    cities.forEach((city) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+        <img src="https://flagcdn.com/w40/${city.flag}.png" alt="${city.country}" style="width: 20px; height: 15px; margin-right: 5px;">
+        <strong>${city.name}</strong> (${city.country}): ${city.start_date} - ${city.end_date}
+    `;
+    cityListElement.appendChild(listItem);
+    });
+}
+};
 
   document.getElementById("sort-chronologically").addEventListener("click", () => {
     renderCityList(places, "chronologically");
