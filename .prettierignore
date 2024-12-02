@@ -2,6 +2,7 @@
 assets/css/main.scss
 assets/plotly/demo.html
 assets/json/resume.json
+assets/geojson/countries.geojson
 _pages/about.md
 _pages/travel.md
 _sass/_base.scss

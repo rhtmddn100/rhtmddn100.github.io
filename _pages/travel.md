@@ -2,6 +2,7 @@
 layout: page
 title: Travel
 permalink: /travel/
+nav: true
 nav_order: 7
 ---
 
@@ -108,20 +109,20 @@ if (sortBy === "chronologically") {
 if (sortBy === "continent") {
     const continents = [...new Set(cities.map((city) => city.continent))];
     continents.forEach((continent) => {
-    const continentHeader = document.createElement("h4");
-    continentHeader.innerHTML = `<strong>${continent}</strong>`;
-    cityListElement.appendChild(continentHeader);
+        const continentHeader = document.createElement("h4");
+        continentHeader.innerHTML = `<strong>${continent}</strong>`;
+        cityListElement.appendChild(continentHeader);
 
-    cities
-        .filter((city) => city.continent === continent)
-        .forEach((city) => {
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `
-            <img src="https://flagcdn.com/w40/${city.flag}.png" alt="${city.country}" style="width: 20px; height: 15px; margin-right: 5px;">
-            <strong>${city.name}</strong> (${city.country}): ${city.start_date} - ${city.end_date}
-        `;
-        cityListElement.appendChild(listItem);
-        });
+        cities
+            .filter((city) => city.continent === continent)
+            .forEach((city) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                <img src="https://flagcdn.com/w40/${city.flag}.png" alt="${city.country}" style="width: 20px; height: 15px; margin-right: 5px;">
+                <strong>${city.name}</strong> (${city.country}): ${city.start_date} - ${city.end_date}
+            `;
+            cityListElement.appendChild(listItem);
+            });
     });
 } else {
     // Render a simple list for chronological order
